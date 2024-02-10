@@ -1,0 +1,67 @@
+{
+  "name": "async-scheduler",
+  "version": "1.0.0",
+  "description": "Asynchronous task scheduler",
+  "scripts": {
+    "prepare": "husky install",
+    "lint": "eslint --cache --ext .ts src/**",
+    "build": "rollup --config rollup.config.js --configPlugin @rollup/plugin-typescript",
+    "format": "prettier --write --cache --parser typescript \"src/**/*.ts\"",
+    "test": "npm run build && node dist/cjs/index.js"
+  },
+  "author": "Jaylen Lee",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/types/index.d.ts",
+      "import": "./dist/esm/AsyncScheduler.js",
+      "require": "./dist/cjs/AsyncScheduler.js"
+    },
+    "./utils/retryPromise": {
+      "types": "./dist/esm/types/utils/retryPromise.d.ts",
+      "import": "./dist/esm/utils/retryPromise.js",
+      "require": "./dist/cjs/utils/retryPromise.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/cjs/AsyncScheduler.js",
+  "types": "./dist/esm/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "18.18.2",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.4",
+    "rollup": "^4.9.5",
+    "rollup-plugin-polyfill-node": "^0.13.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
+  },
+  "lint-staged": {
+    "**/*.{js,ts}": [
+      "npm run lint:script",
+      "git add ."
+    ]
+  },
+  "dependencies": {
+    "eventemitter3": "^5.0.1"
+  },
+  "typesVersions": {
+    "*": {
+      ".": ["./dist/esm/types/index.d.ts"],
+      "./utils/retryPromise": ["./dist/esm/types/utils/retryPromise.d.ts"]
+    }
+  }
+}

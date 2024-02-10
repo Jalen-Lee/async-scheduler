@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": false,
+    "noUnusedLocals": false,
+    "useUnknownInCatchVariables": false,
+    "resolveJsonModule": true,
+    "noImplicitOverride": true,
+    "esModuleInterop": true,
+  },
+  "include": ["src/**/*"],
+}
